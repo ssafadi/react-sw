@@ -5,7 +5,16 @@ import Navbar from "./Navbar";
 import CapsuleButton from "./CapsuleButton";
 
 export default function App() {
+  const fetchData = async () => {
+    const url = "https://swapi.dev/api/people/1";
+    let response = await fetch(url);
+    let result = await response.json();
+    setData(result);
+  };
+
   const [data, setData] = React.useState("");
+
+  React.useEffect(() => fetchData(), []);
 
   return (
     <div className="">
@@ -19,12 +28,4 @@ export default function App() {
       <p>{JSON.stringify(data)}</p>
     </div>
   );
-}
-
-function fetchData() {
-  let result = {};
-  const url = "https://swapi.dev/api/people/1";
-  fetch(url).then(r => (result = r.json()));
-  console.log(result);
-  return result;
 }
