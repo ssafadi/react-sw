@@ -7,8 +7,6 @@ import CapsuleButton from "./CapsuleButton";
 export default function App() {
   const [data, setData] = React.useState("");
 
-  React.useEffect(() => setData(fetchData()), [data]);
-
   return (
     <div className="">
       <Navbar>
